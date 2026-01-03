@@ -6,33 +6,47 @@
     flex-flow: row nowrap;
     align-items: center;
     justify-content: space-between;
-    padding:5px;
+    padding: 5px;
     font-family: "Ubuntu", sans-serif;
     font-weight: 700;
     font-style: normal;
-    background-image: url("https://images.unsplash.com/photo-1548141003-e527ccac1af3?q=80&w=869&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
-    background-position-y:-550px;
-    background-repeat: no-repeat;
-    background-size: cover;
     margin: 0px 5px;
     border-radius: 5px;
+
 }
 
-.title {
-    text-align: center;
-}
 
-.navBar a {
-    margin: 10px;
-    color: white;
-    font-style: none;
+.logo {
     text-decoration: none;
+    color: black;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
 }
 
-.navBar a:hover {
-    color: blue;
+
+.navBar ul {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
 }
 
+.navBar ul li {
+    margin: 0px 10px;
+}
+
+.Link {
+    font-size: 18px;
+    text-decoration: none;
+    color: black;
+}
+
+.Link:hover {
+    font-size: 18.6px;
+}
 
 .search {
     width: 200px;
@@ -42,7 +56,7 @@
     font-size: 12px;
     width: 100px;
     height: 30px;
-    border: none;
+    border: 1px solid black;
     border-radius: 5px;
     font-family: 'Courier New', Courier, monospace;
     outline: none;
@@ -55,5 +69,3 @@
     height: 30px;
     transition: 1s;
 }
-
-

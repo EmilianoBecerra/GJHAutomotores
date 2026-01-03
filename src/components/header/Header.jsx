@@ -1,21 +1,24 @@
 import "./Header.css"
-import React from "react"
-export function Header () {
-    return(
+import { Link } from "react-router-dom"
+export function Header() {
+    return (
         <div className="header">
-            <div className="Logo">
+            <Link to={"/GHAutomotores/"} className="logo">
                 <h1 className="title">GH</h1>
                 <h2 className="subTitle">Automotores</h2>
-            </div>
-            <div className="navBar">
-                <a href="">Autos</a>
-                <a href="">Camionetas</a>
-                <a href="">Motocicletas</a>
-                <a href="">Planes y facilidades</a>
-                <a href="">Nosotros</a>
-            </div>
+            </Link>
+
+            <nav className="navBar">
+                <ul>
+                    <li><Link to={"/GHAutomotores/Autos/"} className="Link">Autos</Link></li>
+                    <li><Link to={"/GHAutomotores/Camionetas/"} className="Link">Camionetas</Link></li>
+                    <li><Link to={"/GHAutomotores/Motos/"} className="Link">Motos</Link>  </li>
+                    <li><Link to={"/GHAutomotores/Planes/"} className="Link">Planes y facilidades</Link></li>
+                    <li><Link to={"/GHAutomotores/Nosotros/"} className="Link">Nosotros</Link></li>
+                </ul>
+            </nav>
             <div className="search">
-                <input type="text"  placeholder="Buscar"/>
+                <input type="text" placeholder="Buscar" />
             </div>
         </div>
     )

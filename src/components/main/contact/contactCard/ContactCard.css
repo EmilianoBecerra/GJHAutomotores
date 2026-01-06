@@ -1,0 +1,13 @@
+
+
+.title {
+    font-size: 30px;
+    margin-bottom: 5px;
+}
+
+.contact-card{
+    width: 400px;
+    height: 300px;
+    line-height: 30px;
+    font-size: 18px;
+}

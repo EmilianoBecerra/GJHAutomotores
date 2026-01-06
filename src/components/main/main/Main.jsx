@@ -1,14 +1,20 @@
 import { Route, Routes } from "react-router-dom"
 import "./Main.css"
 import { Welcome } from "../welcome/Welcome"
-import { Autos } from "../Autos/Autos"
+import { Autos } from "../products/Autos"
+import { Van } from "../products/Van"
+import { Financing } from "./financing/Financing"
+import { Contact } from "../contact/Contact"
 
 export function Main() {
     return (
-        <main>
+        <main className="main">
             <Routes>
-                <Route path="/GHAutomotores" element={<Welcome/>}/>
-                <Route path="/GHAutomotores/autos" element={<Autos/>} />
+                <Route path="/" element={<Welcome />} />
+                <Route path="/Autos" element={<Autos />} />
+                <Route path="/Camionetas" element={<Van />} />
+                <Route path="/Planes" element={<Financing />} />
+                <Route path="/Nosotros" element={<Contact />} />
             </Routes>
         </main>
 

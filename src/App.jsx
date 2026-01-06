@@ -6,12 +6,11 @@ import { Main } from './components/main/main/Main.jsx'
 function App() {
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <Header />
       <Main />
       <Footer />
     </BrowserRouter>
-
   )
 }
 

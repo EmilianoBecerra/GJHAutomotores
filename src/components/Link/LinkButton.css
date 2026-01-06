@@ -1,0 +1,11 @@
+
+.link {
+    padding: 5px;
+    font-family: "Rubik", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    border-radius: 3px;
+    text-decoration: none;
+    text-align: center;
+}

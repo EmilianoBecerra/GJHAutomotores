@@ -1,14 +1,15 @@
-import { Link } from "react-router-dom"
+import { LinkButton } from "../../Link/LinkButton"
+
 import "./Welcome.css"
 export function Welcome() {
     return (
-        <div className="main">
+        <div className="welcome-main">
             <div className="box-quienesSomos">
                 <h3>Quienes Somos</h3>
                 <article>
-                    En <b>GH Automotores</b>, no solo vendemos autos; conectamos personas con sus metas y aventuras. Con años de trayectoria en el mercado automotriz, nos hemos consolidado como el referente de confianza para quienes buscan renovar su vehículo o adquirir su primer coche con total seguridad.
+                    En <b>GJH Automotores</b>, no solo vendemos autos; conectamos personas con sus metas y aventuras. Con años de trayectoria en el mercado automotriz, nos hemos consolidado como el referente de confianza para quienes buscan renovar su vehículo o adquirir su primer coche con total seguridad.
                 </article>
-                <Link to={"/GHAutomotores/Nosotros/"} className="Link">Conocenos</Link>
+                <LinkButton text={"Conocenos"} color={"white"}url={"/Nosotros/"}  className="link"/>
             </div>
             <div className="box-propuestas">
                 <h3>Nuestra Propuesta de Valor</h3>
@@ -26,7 +27,7 @@ export function Welcome() {
                         </p>
                     </ul>
                 </article>
-                <Link to={"/GHAutomotores/Planes/"} className="Link">Ver Planes y facilidades de pago</Link>
+                <LinkButton text={"Planes y Financiación"} color={"white"} url={"/Planes/"} className="link"/>
             </div>
         </div>
     )

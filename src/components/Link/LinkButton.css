@@ -9,3 +9,23 @@
     text-decoration: none;
     text-align: center;
 }
+
+/* Media Queries - Responsive Design */
+
+/* Mobile (hasta 768px) */
+@media screen and (max-width: 768px) {
+    .link {
+        padding: 8px;
+        font-size: 14px;
+        display: inline-block;
+        min-width: 100px;
+    }
+}
+
+/* Mobile pequeño (hasta 480px) */
+@media screen and (max-width: 480px) {
+    .link {
+        padding: 10px;
+        font-size: 13px;
+    }
+}

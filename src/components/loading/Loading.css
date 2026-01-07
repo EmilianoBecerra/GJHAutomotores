@@ -1,0 +1,51 @@
+
+
+
+.loading {
+    width: 100%;
+    height: 92vh;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    font-size: 40px;
+    font-weight: 600;
+    animation: loadingAnimation 1s infinite alternate;
+}
+
+
+
+
+@keyframes loadingAnimation {
+    0% {
+        color: black;
+    }
+    100% {
+        color: white;
+    }
+}
+
+/* Media Queries - Responsive Design */
+
+/* Tablets (768px - 1024px) */
+@media screen and (max-width: 1024px) {
+    .loading {
+        font-size: 35px;
+    }
+}
+
+/* Mobile (hasta 768px) */
+@media screen and (max-width: 768px) {
+    .loading {
+        font-size: 28px;
+        padding: 20px;
+        text-align: center;
+    }
+}
+
+/* Mobile pequeño (hasta 480px) */
+@media screen and (max-width: 480px) {
+    .loading {
+        font-size: 24px;
+        padding: 15px;
+    }
+}

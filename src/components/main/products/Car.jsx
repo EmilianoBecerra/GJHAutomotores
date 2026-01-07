@@ -1,41 +1,60 @@
 import "./Car.css"
-import {ProductCard} from "../products/productCard/ProductCard.jsx"
+import { ProductCard } from "../products/productCard/ProductCard.jsx"
 import { useEffect, useState } from "react";
+import { Loading } from "../../loading/Loading.jsx";
+import { Error } from "../../error/Error.jsx";
 
 export function Car() {
-    const [cars, setCars] = useState([])
+    const [cars, setCars] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null)
 
     useEffect(() => {
         const getCars = async () => {
+            setLoading(true);
             try {
-                const response = await fetch("https://api.sheetbest.com/sheets/0e184cfb-d13d-416a-a41c-47396ed90ad1");
-                if (!response.ok) throw new Error("Error en el servidor");
+                const response = await fetch(import.meta.env.VITE_API_BASE_URL);
+                if (!response.ok) throw new Error("Productos no encontrados");
                 const data = await response.json();
+                if (!data || data.length === 0) {
+                    throw new Error("Error al buscar los productos");
+                }
                 setCars(data);
             } catch (error) {
                 console.error("Hubo una falla", error);
-            };
+                setError(error);
+            } finally {
+                setLoading(false);
 
+            }
         }
-        getCars()
+        getCars();
     }, [])
+
+    if (loading) {
+        return <Loading />
+    }
+
+    if (error) {
+        return <Error/>
+    }
 
     return (
         <div className="container">
-           {
-            cars.map((car) => (
-                car.type === "Auto" ?
-                <ProductCard 
-                    urlImg={car.img} 
-                    key={car.id}
-                    brand={car.marca}
-                    model={car.nombre}
-                    anio={car.anio}
-                    productId={car.id}
-                    color={car.color}
-                /> : null
-            ))
-           }
+            {
+                cars.map((car) => (
+                    car.type === "Auto" ?
+                        <ProductCard
+                            urlImg={car.img}
+                            key={car.id}
+                            brand={car.marca}
+                            model={car.nombre}
+                            anio={car.anio}
+                            productId={car.id}
+                            color={car.color}
+                        /> : null
+                ))
+            }
         </div>
     )
 }

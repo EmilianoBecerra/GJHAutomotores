@@ -1,4 +1,9 @@
-.product {
+.product-info {
+
+}
+
+
+.resume-info {
     width: 100%;
     height: 100%;
     display: flex;
@@ -8,7 +13,6 @@
     align-items: start;
 }
 
-
 .imgs {
     width: 100%;
     display: flex;
@@ -17,7 +21,7 @@
     align-items: center;
 }
 
-.large-img {
+.principal-img {
     height: 600px;
     width: 100%;
     border-radius: 10px;
@@ -27,6 +31,7 @@
     height: 100%;
     border-radius: 20px;
     width: 100%;
+    object-fit: cover;
 }
 
 .smalls-img {
@@ -38,20 +43,155 @@
     width: 150px;
     margin: 20px;
     border-radius: 10px;
+    object-fit: cover;
 }
 
-
-.info-product {
+.product-feature {
     display: flex;
     flex-flow: column nowrap;
-    border: 1px solid rgba(165, 165, 165, 0.53);
     width: 100%;
     height: 100%;
-    margin: 20px;
+    margin: 0 0 0 20px;
+    border-radius: 10px;
+}
+
+.feature-section {
+    border: 1px solid rgba(165, 165, 165, 0.53);
     border-radius: 10px;
 }
 
 
-.info {
-    padding: 50px;
+.condition {
+    font-size: 12px;
+}
+
+.visit {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.visit .buttonVisit {
+    width: 18% !important;
+    margin: 10px;
+    padding: 8px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid black;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: black;
+    font-size: 15px;
+    text-align: center;
+}
+
+/* Media Queries - Responsive Design */
+
+/* Tablets (768px - 1024px) */
+@media screen and (max-width: 1024px) {
+    .resume-info {
+        flex-flow: column nowrap;
+        align-items: center;
+        padding: 15px;
+    }
+
+    .principal-img {
+        height: 500px;
+    }
+
+    .small-photo {
+        width: 120px;
+        margin: 15px;
+    }
+
+    .product-feature {
+        margin: 20px 0 0 0;
+        width: 100%;
+    }
+
+    .visit .buttonVisit {
+        width: 30% !important;
+        font-size: 14px;
+    }
+}
+
+/* Mobile (hasta 768px) */
+@media screen and (max-width: 768px) {
+    .resume-info {
+        flex-flow: column nowrap;
+        padding: 10px;
+    }
+
+    .imgs {
+        width: 100%;
+    }
+
+    .principal-img {
+        height: 350px;
+    }
+
+    .large-photo {
+        border-radius: 15px;
+    }
+
+    .smalls-img {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .small-photo {
+        width: 100px;
+        margin: 10px;
+    }
+
+    .product-feature {
+        margin: 15px 0 0 0;
+        width: 100%;
+    }
+
+    .feature-section {
+        margin-bottom: 15px;
+    }
+
+    .condition {
+        font-size: 11px;
+    }
+
+    .visit .buttonVisit {
+        width: 45% !important;
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+
+/* Mobile pequeño (hasta 480px) */
+@media screen and (max-width: 480px) {
+    .resume-info {
+        padding: 5px;
+    }
+
+    .principal-img {
+        height: 250px;
+    }
+
+    .large-photo {
+        border-radius: 10px;
+    }
+
+    .small-photo {
+        width: 80px;
+        margin: 8px;
+    }
+
+    .visit {
+        flex-flow: column nowrap;
+    }
+
+    .visit .buttonVisit {
+        width: 80% !important;
+        margin: 8px;
+        font-size: 13px;
+    }
 }

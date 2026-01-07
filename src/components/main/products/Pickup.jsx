@@ -1,38 +1,50 @@
 import { useEffect, useState } from "react"
 import "./Pickup.css"
-import {ProductCard} from "../products/productCard/ProductCard.jsx"
+import { ProductCard } from "../products/productCard/ProductCard.jsx"
+import { Loading } from "../../loading/Loading.jsx";
+import { Error } from "../../error/Error.jsx";
 
 export function Pickup() {
-    const [pickUps, setPickUps] = useState([])
+    const [pickUps, setPickUps] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         const getPickUp = async () => {
+            setLoading(true);
             try {
-                const response = await fetch("https://api.sheetbest.com/sheets/0e184cfb-d13d-416a-a41c-47396ed90ad1");
-                if(!response.ok) throw new Error("Error en el servidor");
+                const response = await fetch(import.meta.env.VITE_API_BASE_URL);
+                if (!response.ok) throw new Error("Error al buscar los productos");
                 const data = await response.json();
                 setPickUps(data);
             } catch (error) {
                 console.log("Hubo uno falla", error);
+                setError(error);
+            } finally {
+                setLoading(false);
             }
         }
         getPickUp()
     }, [])
+
+    if (loading) return <Loading />
+    if (error) return <Error />
+
     return (
         <div className="container">
             {
                 pickUps.map((pickup) => (
                     pickup.type === "Camioneta" ?
-                <ProductCard
-                    urlImg={pickup.img} 
-                    key={pickup.id}
-                    brand={pickup.marca}
-                    model={pickup.nombre}
-                    anio={pickup.anio}
-                    productId={pickup.id}
-                    color={pickup.color}
-                />
-                    : null
+                        <ProductCard
+                            urlImg={pickup.img}
+                            key={pickup.id}
+                            brand={pickup.marca}
+                            model={pickup.nombre}
+                            anio={pickup.anio}
+                            productId={pickup.id}
+                            color={pickup.color}
+                        />
+                        : null
                 ))
             }
         </div>

@@ -1,65 +1,121 @@
 import { useEffect, useState } from "react"
 import "./Product.css"
-import { Link } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { FeatureItem } from "./featureItem/FeatureItem.jsx";
+import { Loading } from "../../loading/Loading.jsx";
+import { Error } from "../../error/Error.jsx";
 
 
 export function Product() {
-    const urlParams = window.location.pathname;
+    const {carId} = useParams();
+    const navigate = useNavigate();
     const [product, setProduct] = useState({});
     const [loading, setLoading] = useState(true);
-    console.log(urlParams)
-    const productId = urlParams.split("/")[4];
+    const [error, setError] = useState(null);
+
     useEffect(() => {
         const getProduct = async () => {
+            setLoading(true);
             try {
-                const response = await fetch(`https://api.sheetbest.com/sheets/0e184cfb-d13d-416a-a41c-47396ed90ad1/${productId}`);
-                if (!response.ok) throw new Error("Falló el servidor");
+                const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/${carId}`);
+                if (!response.ok) throw new Error("Product no encontrado");
                 const data = await response.json();
-                setLoading(false);
-                setProduct(data);
+                if (!data || data.length === 0) {
+                    throw new Error("Producto no existe");
+                }
+                setProduct(data[0]);
             }
             catch (error) {
                 console.error("Hubo una falla", error);
+                setError(error.message);
+            }
+            finally {
+                setLoading(false);
             }
         }
-        getProduct()
-    }, [])
+
+        if (carId) {
+            getProduct()
+        }
+    }, [carId])
+
     if (loading) {
-        return (
-            <p>Cargando...</p>
-        )
+        return <Loading/>
     }
 
-    const imgArray = product[0].imgDetail.split(",");
+    if (error) {
+        return <Error/>
+    }
+
+    if (!product) {
+        return <div className="error">Producto no encontrado</div>
+    }
+
+    const imgArray = product.imgDetail ? product.imgDetail.split(",") : [];
+    const whatsappMessage = `Hola, me interesa el ${product.marca} ${product.nombre} ${product.modelo}`;
+    const whatsappUrl = `https://api.whatsapp.com/send/?phone=543516225920&text=${encodeURIComponent(whatsappMessage)}&type=phone_number&app_absent=0`;
 
     return (
-        <div className="product">
-            <div className="imgs">
-                <div className="large-img">
-                    <img src={product[0].img} alt={product[0].name} className="large-photo" />
-                </div>
-                <div className="smalls-img">
-                    {
-                        imgArray.map((photo) => (
-                            imgArray.length > 0 ?
-                                <img src={photo} key={product[0].id} alt={product.name} className="small-photo"/>
-                                : null
-                        ))
+        <div className="product-info">
+            <div className="resume-info">
+                <div className="imgs">
+                    <div className="principal-img">
+                        <img src={product.img} alt={product.name} className="large-photo" />
+                    </div>
+                    {imgArray.length > 0 && (
+                        <div className="smalls-img">
+                            {imgArray.map((photo, index) => (
+                                <img src={[photo]} key={index} alt={product.name} className="small-photo" />
+                            ))}
+                        </div>)
                     }
                 </div>
+
+                <div className="product-feature">
+                    <div className="feature-section">
+                        <FeatureItem title={`${product.marca} ${product.nombre} ${product.motor} ${product.modelo}`}>
+                            <p>{product.kilometros} KM <b>-</b> {product.lugar}</p>
+                        </FeatureItem>
+                        <FeatureItem label="Precio Contado" value={`$ ${product.precio}`} />
+                        <FeatureItem label="Precio Financiado" value={`$ ${product.precio}`}>
+                            <p className="condition">*Precio financiado 50% o más</p>
+                        </FeatureItem>
+                        <FeatureItem label="Año" value={` ${product.anio}`} />
+                        <FeatureItem label="Modelo" value={`${product.modelo} ${product.motor} - ${product.puertas} puertas`} />
+                        <FeatureItem label="Transmisión" value={`${product.transmision}`} />
+                        <div className="visit">
+                            <a href={whatsappUrl}
+                                className="buttonVisit"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                Agendar Visita
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
             </div>
-            <div className="info-product">
-                <div className="info">
-                    <p><b>{product[0].marca} {product[0].nombre} {product[0].anio} {product[0].motor} {product[0].modelo}</b></p>
-                    <p>{product[0].kilometros} KM <b>-</b> {product[0].lugar}</p>
-                </div>
-                <hr />
-                <div className="info">
-                    <p>Precio Contado</p>
-                    <p>$ {product[0].precio}</p>
-                </div>
+            <div className="div-car-info">
+                <div className="car-info">
+                    <p><b>General</b></p>
 
-
+                </div>
+                <div className="car-info">
+                    <p><b>Exterior</b></p>
+                </div>
+                <div className="car-info">
+                    <p><b>Equipamiento</b></p>
+                </div>
+                <div className="car-info">
+                    <p><b>Seguridad</b></p>
+                </div>
+                <div className="car-info">
+                    <p><b>Interior</b></p>
+                </div>
+                <div className="car-info">
+                    <p><b>Extras</b></p>
+                </div>
             </div>
         </div>
     )

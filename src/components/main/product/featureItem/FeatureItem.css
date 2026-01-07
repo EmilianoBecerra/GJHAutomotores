@@ -1,0 +1,45 @@
+.bold-info {
+    font-size: 17px;
+    margin: 3px 0 0 10px;
+}
+
+.feature {
+    padding: 25px;
+}
+
+/* Media Queries - Responsive Design */
+
+/* Tablets (768px - 1024px) */
+@media screen and (max-width: 1024px) {
+    .bold-info {
+        font-size: 16px;
+    }
+
+    .feature {
+        padding: 20px;
+    }
+}
+
+/* Mobile (hasta 768px) */
+@media screen and (max-width: 768px) {
+    .bold-info {
+        font-size: 15px;
+        margin: 3px 0 0 8px;
+    }
+
+    .feature {
+        padding: 15px;
+    }
+}
+
+/* Mobile pequeño (hasta 480px) */
+@media screen and (max-width: 480px) {
+    .bold-info {
+        font-size: 14px;
+        margin: 3px 0 0 5px;
+    }
+
+    .feature {
+        padding: 12px;
+    }
+}

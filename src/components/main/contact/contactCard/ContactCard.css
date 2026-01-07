@@ -11,3 +11,50 @@
     line-height: 30px;
     font-size: 18px;
 }
+
+/* Media Queries - Responsive Design */
+
+/* Tablets (768px - 1024px) */
+@media screen and (max-width: 1024px) {
+    .title {
+        font-size: 28px;
+    }
+
+    .contact-card {
+        width: 350px;
+        height: 280px;
+        font-size: 17px;
+        line-height: 28px;
+    }
+}
+
+/* Mobile (hasta 768px) */
+@media screen and (max-width: 768px) {
+    .title {
+        font-size: 26px;
+    }
+
+    .contact-card {
+        width: 100%;
+        max-width: 350px;
+        height: auto;
+        min-height: 250px;
+        font-size: 16px;
+        line-height: 26px;
+        padding: 20px;
+    }
+}
+
+/* Mobile pequeño (hasta 480px) */
+@media screen and (max-width: 480px) {
+    .title {
+        font-size: 24px;
+    }
+
+    .contact-card {
+        max-width: 100%;
+        font-size: 15px;
+        line-height: 24px;
+        padding: 15px;
+    }
+}

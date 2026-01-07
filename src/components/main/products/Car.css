@@ -1,0 +1,26 @@
+.container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+}
+
+/* Media Queries - Responsive Design */
+
+/* Tablets (768px - 1024px) */
+@media screen and (max-width: 1024px) {
+    .container {
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+        padding: 10px;
+    }
+}
+
+/* Mobile (hasta 768px) */
+@media screen and (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 15px 10px;
+    }
+}

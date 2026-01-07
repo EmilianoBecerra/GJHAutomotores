@@ -9,3 +9,22 @@ footer {
     background-color: black;
     color: white;
 }
+
+/* Media Queries - Responsive Design */
+
+/* Mobile (hasta 768px) */
+@media screen and (max-width: 768px) {
+    footer {
+        font-size: 13px;
+        padding: 8px 5px;
+        line-height: 20px;
+    }
+}
+
+/* Mobile pequeño (hasta 480px) */
+@media screen and (max-width: 480px) {
+    footer {
+        font-size: 12px;
+        padding: 10px 5px;
+    }
+}

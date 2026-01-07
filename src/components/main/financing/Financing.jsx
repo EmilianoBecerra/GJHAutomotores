@@ -1,4 +1,5 @@
-import { CardFinancing } from "../../cardFinancing/cardFinancing"
+
+import { CardFinancing } from "./cardFinancing/CardFinancing.jsx"
 import "./Financing.css"
 
 export function Financing() {

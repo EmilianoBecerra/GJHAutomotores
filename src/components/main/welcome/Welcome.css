@@ -67,3 +67,76 @@ li+p {
 .link {
     font-size: 23px;
 }
+
+/* Media Queries - Responsive Design */
+
+/* Tablets (768px - 1024px) */
+@media screen and (max-width: 1024px) {
+    h3 {
+        font-size: 36px;
+        margin-left: 15px;
+    }
+
+    article {
+        width: 70%;
+        font-size: 18px;
+        line-height: 24px;
+    }
+
+    .link {
+        font-size: 20px;
+    }
+}
+
+/* Mobile (hasta 768px) */
+@media screen and (max-width: 768px) {
+    .box-quienesSomos,
+    .box-propuestas {
+        height: auto;
+        min-height: 100vh;
+        padding: 30px 15px;
+    }
+
+    h3 {
+        font-size: 28px;
+        margin-left: 10px;
+        text-align: center;
+    }
+
+    article {
+        width: 90%;
+        font-size: 16px;
+        line-height: 22px;
+        margin-left: 0;
+    }
+
+    li+p {
+        margin-left: 10px;
+        font-size: 15px;
+    }
+
+    .link {
+        font-size: 18px;
+    }
+}
+
+/* Mobile pequeño (hasta 480px) */
+@media screen and (max-width: 480px) {
+    .welcome-main {
+        font-size: 16px;
+    }
+
+    h3 {
+        font-size: 24px;
+    }
+
+    article {
+        width: 95%;
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .link {
+        font-size: 16px;
+    }
+}

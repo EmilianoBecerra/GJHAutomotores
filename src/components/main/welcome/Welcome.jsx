@@ -1,6 +1,6 @@
-import { LinkButton } from "../../Link/LinkButton"
-
+import { LinkButton } from "../../Link/LinkButton.jsx"
 import "./Welcome.css"
+
 export function Welcome() {
     return (
         <div className="welcome-main">
@@ -14,7 +14,7 @@ export function Welcome() {
             <div className="box-propuestas">
                 <h3>Nuestra Propuesta de Valor</h3>
                 <article>
-                    Sabemos que comprar un vehículo es una decisión importante. <p>Por eso, ofrecemos un servicio integral basado en la transparencia y la calidad</p>
+                    Sabemos que comprar un vehículo es una decisión importante. <p>Por eso, ofrecemos un servicio integral basado en la transparencia y la calidad.</p>
                     <ul>
                         <li>Autos Seleccionados</li>
                         <p>Cada unidad usada de nuestro inventario atraviesa una rigurosa inspección técnica y estética antes de salir a la venta.</p>

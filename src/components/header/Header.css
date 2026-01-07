@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 
 header {
-    max-width: 100%;
+    width: 100%;
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
     justify-content: space-between;
-    padding: 5px;
+    padding: 15px 20px;
     font-family: "Rubik", sans-serif;
     font-optical-sizing: auto;
     font-weight: 700;
@@ -22,7 +22,7 @@ header {
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
-    font-size: 18px;
+    font-size: 22px;
 }
 
 .navBar {
@@ -75,7 +75,110 @@ header {
 }
 
 .search input:focus {
-    width: 180px;
+    width: 150px;
     height: 30px;
     transition: 1s;
+    padding: 5px;
+}
+
+.logo {
+    height: 100%;
+    width: 150px;
+    border-radius: 15px;
+}
+
+/* Media Queries - Responsive Design */
+
+/* Tablets (768px - 1024px) */
+@media screen and (max-width: 1024px) {
+    header {
+        padding: 8px;
+        margin: 0px 3px;
+    }
+
+    .logo {
+        font-size: 16px;
+        width: 130px;
+    }
+
+    .navBar ul {
+        gap: 10px;
+    }
+
+    .search {
+        width: 180px;
+    }
+
+    .search input {
+        width: 90px;
+    }
+
+    .search input:focus {
+        width: 130px;
+    }
+}
+
+/* Mobile (hasta 768px) */
+@media screen and (max-width: 768px) {
+    header {
+        flex-flow: column nowrap;
+        padding: 10px 5px;
+        gap: 10px;
+    }
+
+    .logo {
+        font-size: 14px;
+        width: 100px;
+        margin-bottom: 10px;
+    }
+
+    .navBar {
+        width: 100%;
+    }
+
+    .navBar ul {
+        flex-flow: column nowrap;
+        gap: 8px;
+        padding: 0;
+    }
+
+    .navBar ul li {
+        width: 100%;
+        text-align: center;
+        padding: 8px 0;
+    }
+
+    .aNavBar {
+        width: 100%;
+        padding: 5px;
+    }
+
+    .search {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    .search input {
+        width: 70%;
+        max-width: 200px;
+    }
+
+    .search input:focus {
+        width: 85%;
+        max-width: 250px;
+    }
+}
+
+/* Mobile pequeño (hasta 480px) */
+@media screen and (max-width: 480px) {
+    .logo {
+        font-size: 12px;
+        width: 80px;
+    }
+
+    .navBar ul li {
+        font-size: 14px;
+    }
 }

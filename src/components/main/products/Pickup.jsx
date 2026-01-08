@@ -33,19 +33,22 @@ export function Pickup() {
     return (
         <div className="container">
             {
-                pickUps.map((pickup) => (
-                    pickup.type === "Camioneta" ?
-                        <ProductCard
-                            urlImg={pickup.img}
-                            key={pickup.id}
-                            brand={pickup.marca}
-                            model={pickup.nombre}
-                            anio={pickup.anio}
-                            productId={pickup.id}
-                            color={pickup.color}
-                        />
-                        : null
-                ))
+                pickUps.map((pickup) => {
+                    const imgArray = pickup.imgDetail ? pickup.imgDetail.split(",") : [];
+                    return (
+                        pickup.carroceria === "Camioneta" ?
+                            <ProductCard
+                                urlImg={imgArray[0]}
+                                key={pickup.id}
+                                brand={pickup.marca}
+                                model={pickup.modelo}
+                                anio={pickup.anio}
+                                productId={pickup.id}
+                                color={pickup.color}
+                            />
+                            : null
+                    )
+                })
             }
         </div>
     )

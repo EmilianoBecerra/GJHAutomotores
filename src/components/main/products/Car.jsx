@@ -36,24 +36,28 @@ export function Car() {
     }
 
     if (error) {
-        return <Error/>
+        return <Error />
     }
+
 
     return (
         <div className="container">
             {
-                cars.map((car) => (
-                    car.type === "Auto" ?
-                        <ProductCard
-                            urlImg={car.img}
-                            key={car.id}
-                            brand={car.marca}
-                            model={car.nombre}
-                            anio={car.anio}
-                            productId={car.id}
-                            color={car.color}
-                        /> : null
-                ))
+                cars.map((car) => {
+                    const imgArray = car.imgDetail ? car.imgDetail.split(",") : [];
+                    return (
+                        car.carroceria === "Auto" ?
+                            <ProductCard
+                                urlImg={imgArray[0]}
+                                key={car.id}
+                                brand={car.marca}
+                                model={car.modelo}
+                                anio={car.anio}
+                                productId={car.id}
+                                color={car.color}
+                            /> : null
+                    )
+                })
             }
         </div>
     )

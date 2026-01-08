@@ -4,14 +4,16 @@ import { useNavigate, useParams } from "react-router-dom";
 import { FeatureItem } from "./featureItem/FeatureItem.jsx";
 import { Loading } from "../../loading/Loading.jsx";
 import { Error } from "../../error/Error.jsx";
+import { ProductInfo } from "./featureItem/ProductInfo.jsx";
 
 
 export function Product() {
-    const {carId} = useParams();
+    const { carId } = useParams();
     const navigate = useNavigate();
     const [product, setProduct] = useState({});
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [image, setImage] = useState("");
 
     useEffect(() => {
         const getProduct = async () => {
@@ -40,19 +42,24 @@ export function Product() {
     }, [carId])
 
     if (loading) {
-        return <Loading/>
+        return <Loading />
     }
 
     if (error) {
-        return <Error/>
+        return <Error />
     }
 
     if (!product) {
         return <div className="error">Producto no encontrado</div>
     }
 
+
+    function handleClick (e) {
+        setImage(e.target.src);
+    }
+
     const imgArray = product.imgDetail ? product.imgDetail.split(",") : [];
-    const whatsappMessage = `Hola, me interesa el ${product.marca} ${product.nombre} ${product.modelo}`;
+    const whatsappMessage = `Hola, me interesa el ${product.marca} ${product.modelo} ${product.version}`;
     const whatsappUrl = `https://api.whatsapp.com/send/?phone=543516225920&text=${encodeURIComponent(whatsappMessage)}&type=phone_number&app_absent=0`;
 
     return (
@@ -60,12 +67,12 @@ export function Product() {
             <div className="resume-info">
                 <div className="imgs">
                     <div className="principal-img">
-                        <img src={product.img} alt={product.name} className="large-photo" />
+                        <img src={image == "" ? imgArray[0] : image} alt={product.name} className="large-photo"/>
                     </div>
                     {imgArray.length > 0 && (
                         <div className="smalls-img">
                             {imgArray.map((photo, index) => (
-                                <img src={[photo]} key={index} alt={product.name} className="small-photo" />
+                                <img src={photo} key={index} alt={product.name} className="small-photo"  onClick={handleClick}/>
                             ))}
                         </div>)
                     }
@@ -73,7 +80,7 @@ export function Product() {
 
                 <div className="product-feature">
                     <div className="feature-section">
-                        <FeatureItem title={`${product.marca} ${product.nombre} ${product.motor} ${product.modelo}`}>
+                        <FeatureItem title={`${product.marca} ${product.modelo} ${product.motor} ${product.version}`}>
                             <p>{product.kilometros} KM <b>-</b> {product.lugar}</p>
                         </FeatureItem>
                         <FeatureItem label="Precio Contado" value={`$ ${product.precio}`} />
@@ -81,7 +88,7 @@ export function Product() {
                             <p className="condition">*Precio financiado 50% o más</p>
                         </FeatureItem>
                         <FeatureItem label="Año" value={` ${product.anio}`} />
-                        <FeatureItem label="Modelo" value={`${product.modelo} ${product.motor} - ${product.puertas} puertas`} />
+                        <FeatureItem label="Modelo" value={`${product.version} ${product.motor} - ${product.puertas} puertas`} />
                         <FeatureItem label="Transmisión" value={`${product.transmision}`} />
                         <div className="visit">
                             <a href={whatsappUrl}
@@ -97,25 +104,9 @@ export function Product() {
                 </div>
             </div>
             <div className="div-car-info">
-                <div className="car-info">
-                    <p><b>General</b></p>
-
-                </div>
-                <div className="car-info">
-                    <p><b>Exterior</b></p>
-                </div>
-                <div className="car-info">
-                    <p><b>Equipamiento</b></p>
-                </div>
-                <div className="car-info">
-                    <p><b>Seguridad</b></p>
-                </div>
-                <div className="car-info">
-                    <p><b>Interior</b></p>
-                </div>
-                <div className="car-info">
-                    <p><b>Extras</b></p>
-                </div>
+                <ProductInfo
+                    product={product}
+                />
             </div>
         </div>
     )

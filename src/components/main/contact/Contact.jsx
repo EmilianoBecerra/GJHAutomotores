@@ -26,7 +26,7 @@ export function Contact() {
             </article>
             <div className="cards">
                 {
-                    props.map(prop => <ContactCard title={prop.title} description={prop.description} />)
+                    props.map((prop, index) => <ContactCard title={prop.title} key={index} description={prop.description} />)
                 }
             </div>
 

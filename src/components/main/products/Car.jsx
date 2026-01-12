@@ -52,7 +52,7 @@ export function Car() {
                                 key={car.id}
                                 brand={car.marca}
                                 model={car.modelo}
-                                anio={car.anio}
+                                fabricacion={car.fabricacion}
                                 productId={car.id}
                                 color={car.color}
                             /> : null

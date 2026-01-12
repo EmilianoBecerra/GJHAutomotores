@@ -1,7 +1,7 @@
 import "./ProductCard.css"
 import { LinkButton } from "../../../Link/LinkButton.jsx"
 
-export function ProductCard({ urlImg, model, anio, productId, brand, color }) {
+export function ProductCard({ urlImg, model, fabricacion, productId, brand, color }) {
     return (
         <div className="productCard">
             <div className="div-img">
@@ -9,8 +9,8 @@ export function ProductCard({ urlImg, model, anio, productId, brand, color }) {
             </div>
             <div className="div-info">
                 <p>{`${brand} ${model}`}</p>
-                <span>{anio}</span>
-                <LinkButton size={13} text={"Ver mas"} url={productId} color={"black"} />
+                <span>{fabricacion}</span>
+                <LinkButton size={13} text={"Ver mas"} url={`/productos/autos/${productId}`} color={"black"} />
             </div>
         </div>
     )

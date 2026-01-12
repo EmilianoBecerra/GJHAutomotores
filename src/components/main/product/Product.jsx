@@ -87,7 +87,7 @@ export function Product() {
                         <FeatureItem label="Precio Financiado" value={`$ ${product.precio}`}>
                             <p className="condition">*Precio financiado 50% o más</p>
                         </FeatureItem>
-                        <FeatureItem label="Año" value={` ${product.anio}`} />
+                        <FeatureItem label="Año" value={` ${product.fabricacion}`} />
                         <FeatureItem label="Modelo" value={`${product.version} ${product.motor} - ${product.puertas} puertas`} />
                         <FeatureItem label="Transmisión" value={`${product.transmision}`} />
                         <div className="visit">

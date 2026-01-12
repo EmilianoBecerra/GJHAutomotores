@@ -42,7 +42,7 @@ export function Pickup() {
                                 key={pickup.id}
                                 brand={pickup.marca}
                                 model={pickup.modelo}
-                                anio={pickup.anio}
+                                fabricacion={pickup.fabricacion}
                                 productId={pickup.id}
                                 color={pickup.color}
                             />

@@ -37,3 +37,70 @@
     font-weight: 200;
     padding-left: 8px;
 }
+
+@media screen and (max-width: 1024px) {
+    .title-info {
+        font-size: 22px;
+    }
+
+    .information-product {
+        padding: 25px;
+    }
+
+    .particular-information {
+        grid-gap: 20px;
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .title-info {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .information-product {
+        padding: 20px 15px;
+    }
+
+    .particular-information {
+        grid-template-columns: 1fr;
+        grid-gap: 15px;
+    }
+
+    .table-tips p {
+        width: 100%;
+        font-size: 15px;
+    }
+
+    .typeTips {
+        font-size: 15px;
+    }
+
+    .tips {
+        font-size: 14px;
+    }
+}
+
+
+@media screen and (max-width: 480px) {
+    .title-info {
+        font-size: 18px;
+    }
+
+    .information-product {
+        padding: 15px 10px;
+    }
+
+    .table-tips p {
+        font-size: 14px;
+    }
+
+    .typeTips {
+        font-size: 14px;
+    }
+
+    .tips {
+        font-size: 13px;
+    }
+}

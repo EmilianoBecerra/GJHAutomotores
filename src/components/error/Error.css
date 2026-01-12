@@ -9,16 +9,14 @@
     font-weight: 600;
 }
 
-/* Media Queries - Responsive Design */
 
-/* Tablets (768px - 1024px) */
 @media screen and (max-width: 1024px) {
     .error {
         font-size: 35px;
     }
 }
 
-/* Mobile (hasta 768px) */
+
 @media screen and (max-width: 768px) {
     .error {
         font-size: 28px;
@@ -27,7 +25,6 @@
     }
 }
 
-/* Mobile pequeño (hasta 480px) */
 @media screen and (max-width: 480px) {
     .error {
         font-size: 24px;

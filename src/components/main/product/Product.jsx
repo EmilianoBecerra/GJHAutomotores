@@ -1,19 +1,20 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import "./Product.css"
-import { useNavigate, useParams } from "react-router-dom";
 import { FeatureItem } from "./featureItem/FeatureItem.jsx";
 import { Loading } from "../../loading/Loading.jsx";
 import { Error } from "../../error/Error.jsx";
 import { ProductInfo } from "./featureItem/ProductInfo.jsx";
+import { globalContext } from "../../../context/context.jsx";
+import { useParams } from "react-router-dom";
 
 
 export function Product() {
     const { carId } = useParams();
-    const navigate = useNavigate();
     const [product, setProduct] = useState({});
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [image, setImage] = useState("");
+    const {setBuscador} = useContext(globalContext);
 
     useEffect(() => {
         const getProduct = async () => {
@@ -33,6 +34,7 @@ export function Product() {
             }
             finally {
                 setLoading(false);
+                setBuscador("");
             }
         }
 
@@ -60,7 +62,7 @@ export function Product() {
 
     const imgArray = product.imgDetail ? product.imgDetail.split(",") : [];
     const whatsappMessage = `Hola, me interesa el ${product.marca} ${product.modelo} ${product.version}`;
-    const whatsappUrl = `https://api.whatsapp.com/send/?phone=543516225920&text=${encodeURIComponent(whatsappMessage)}&type=phone_number&app_absent=0`;
+    const whatsappUrl = `https://api.whatsapp.com/send/?phone=${import.meta.env.VITE_API_CEL_NUMBER}}&text=${encodeURIComponent(whatsappMessage)}&type=phone_number&app_absent=0`;
 
     return (
         <div className="product-info">

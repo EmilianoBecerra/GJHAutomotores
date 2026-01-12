@@ -22,9 +22,6 @@ main {
   flex: 1;
 }
 
-/* Media Queries - Responsive Design */
-
-/* Mobile (hasta 768px) */
 @media screen and (max-width: 768px) {
   * {
     box-sizing: border-box;
@@ -39,7 +36,7 @@ main {
   }
 }
 
-/* Mobile pequeño (hasta 480px) */
+
 @media screen and (max-width: 480px) {
   main {
     padding: 0px 2px;

@@ -5,9 +5,7 @@
     gap: 10px;
 }
 
-/* Media Queries - Responsive Design */
 
-/* Tablets (768px - 1024px) */
 @media screen and (max-width: 1024px) {
     .container {
         grid-template-columns: 1fr 1fr;
@@ -16,7 +14,7 @@
     }
 }
 
-/* Mobile (hasta 768px) */
+
 @media screen and (max-width: 768px) {
     .container {
         grid-template-columns: 1fr;

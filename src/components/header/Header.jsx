@@ -1,20 +1,24 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useEffectEvent, useState } from "react";
 import "./Header.css"
-import { Link, useNavigate, useParams } from "react-router-dom"
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom"
 import { globalContext } from "../../context/context";
 
 export function Header() {
     const { setBuscador, buscador } = useContext(globalContext);
     const navigate = useNavigate();
-    
+    const location = useLocation();
+
     function handleInputChange(e) {
         setBuscador(e.target.value);
     }
 
     useEffect(() => {
-        setTimeout(() => {
-            navigate("/buscador")
-        }, 200)
+        if (buscador.length >= 2) {
+            setTimeout(() => {
+                navigate("/buscador")
+            }, 200)
+        }
+
     }, [buscador])
 
     return (

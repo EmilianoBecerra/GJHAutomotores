@@ -1,8 +1,3 @@
-.product-info {
-
-}
-
-
 .resume-info {
     width: 100%;
     height: 100%;
@@ -88,9 +83,6 @@
     text-align: center;
 }
 
-/* Media Queries - Responsive Design */
-
-/* Tablets (768px - 1024px) */
 @media screen and (max-width: 1024px) {
     .resume-info {
         flex-flow: column nowrap;
@@ -118,7 +110,6 @@
     }
 }
 
-/* Mobile (hasta 768px) */
 @media screen and (max-width: 768px) {
     .resume-info {
         flex-flow: column nowrap;
@@ -167,7 +158,6 @@
     }
 }
 
-/* Mobile pequeño (hasta 480px) */
 @media screen and (max-width: 480px) {
     .resume-info {
         padding: 5px;

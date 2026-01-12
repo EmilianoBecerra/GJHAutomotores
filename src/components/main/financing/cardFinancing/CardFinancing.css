@@ -21,9 +21,6 @@
   border-color: #000;
 }
 
-/* Media Queries - Responsive Design */
-
-/* Tablets (768px - 1024px) */
 @media screen and (max-width: 1024px) {
   .card {
     width: 450px;
@@ -32,7 +29,6 @@
   }
 }
 
-/* Mobile (hasta 768px) */
 @media screen and (max-width: 768px) {
   .card {
     width: 100%;
@@ -45,7 +41,6 @@
   }
 }
 
-/* Mobile pequeño (hasta 480px) */
 @media screen and (max-width: 480px) {
   .card {
     max-width: 100%;

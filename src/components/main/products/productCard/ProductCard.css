@@ -29,9 +29,6 @@
   align-items: center;
 }
 
-/* Media Queries - Responsive Design */
-
-/* Tablets (768px - 1024px) */
 @media screen and (max-width: 1024px) {
   .product-img {
     height: 250px;
@@ -42,7 +39,6 @@
   }
 }
 
-/* Mobile (hasta 768px) */
 @media screen and (max-width: 768px) {
   .product {
     margin-bottom: 15px;
@@ -67,7 +63,6 @@
   }
 }
 
-/* Mobile pequeño (hasta 480px) */
 @media screen and (max-width: 480px) {
   .product-img {
     height: 180px;

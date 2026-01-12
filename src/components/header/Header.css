@@ -87,9 +87,7 @@ header {
     border-radius: 15px;
 }
 
-/* Media Queries - Responsive Design */
 
-/* Tablets (768px - 1024px) */
 @media screen and (max-width: 1024px) {
     header {
         padding: 8px;
@@ -118,7 +116,7 @@ header {
     }
 }
 
-/* Mobile (hasta 768px) */
+
 @media screen and (max-width: 768px) {
     header {
         flex-flow: column nowrap;
@@ -171,7 +169,7 @@ header {
     }
 }
 
-/* Mobile pequeño (hasta 480px) */
+
 @media screen and (max-width: 480px) {
     .logo {
         font-size: 12px;

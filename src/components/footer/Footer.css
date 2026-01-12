@@ -10,9 +10,7 @@ footer {
     color: white;
 }
 
-/* Media Queries - Responsive Design */
 
-/* Mobile (hasta 768px) */
 @media screen and (max-width: 768px) {
     footer {
         font-size: 13px;
@@ -21,7 +19,7 @@ footer {
     }
 }
 
-/* Mobile pequeño (hasta 480px) */
+
 @media screen and (max-width: 480px) {
     footer {
         font-size: 12px;

@@ -4,13 +4,14 @@ import "./Busqueda.css"
 import { Loading } from "../../loading/Loading";
 import { Error } from "../../error/Error";
 import { globalContext } from "../../../context/context";
+import { useParams } from "react-router-dom";
 
 export function Busqueda() {
 
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const { buscador } = useContext(globalContext);
+    const { buscador, setBuscador } = useContext(globalContext);
 
     useEffect(() => {
         const getFilterProducts = async () => {

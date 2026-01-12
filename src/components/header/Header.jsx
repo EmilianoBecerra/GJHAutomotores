@@ -1,27 +1,21 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./Header.css"
 import { Link, useNavigate, useParams } from "react-router-dom"
+import { globalContext } from "../../context/context";
 
 export function Header() {
-    const [inputValue, setInputValue] = useState("");
+    const { setBuscador, buscador } = useContext(globalContext);
     const navigate = useNavigate();
-
-    const location = window.location.pathname;
-
+    
     function handleInputChange(e) {
-        setInputValue(e.target.value);
-        if (inputValue) {
-            navigate(`/buscador/${e.target.value}`)
-        }
+        setBuscador(e.target.value);
     }
 
     useEffect(() => {
-        if (!location.includes("buscador")) {
-            setInputValue("");
-        }
-    }, [location])
-
-
+        setTimeout(() => {
+            navigate("/buscador")
+        }, 200)
+    }, [buscador])
 
     return (
         <header>
@@ -39,7 +33,7 @@ export function Header() {
                 </ul>
             </nav>
             <div className="search">
-                <input type="text" value={inputValue} placeholder="Buscar" id="buscador" onChange={handleInputChange} />
+                <input type="text" value={buscador} placeholder="Buscar" id="buscador" onChange={handleInputChange} />
             </div>
         </header>
     )

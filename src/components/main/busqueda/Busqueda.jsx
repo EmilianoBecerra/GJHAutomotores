@@ -1,17 +1,16 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { ProductCard } from "../products/productCard/ProductCard"
 import "./Busqueda.css"
 import { Loading } from "../../loading/Loading";
 import { Error } from "../../error/Error";
-import { useParams } from "react-router-dom";
+import { globalContext } from "../../../context/context";
 
 export function Busqueda() {
 
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const params = useParams();
-
+    const { buscador } = useContext(globalContext);
 
     useEffect(() => {
         const getFilterProducts = async () => {
@@ -31,19 +30,22 @@ export function Busqueda() {
                 setLoading(false);
             }
         }
-        setTimeout(() => { getFilterProducts(); }, "100");
+        setTimeout(() => {
+            getFilterProducts();
+        }, "100");
 
     }, []);
 
     if (loading) return <Loading />
     if (error) return <Error />
-    const marcaModelo = params.params;
+
+    const buscadorCaseInsensitive = buscador.toLowerCase();
 
     return (
         <div className="filter-container">
             {
                 products.map((product) => {
-                    if (product.marca.toLowerCase().includes(marcaModelo) || product.modelo.toLowerCase().includes(marcaModelo)) {
+                    if (product.marca.toLowerCase().includes(buscadorCaseInsensitive) || product.modelo.toLowerCase().includes(buscadorCaseInsensitive)) {
                         const imgArray = product.imgDetail ? product.imgDetail.split(",") : [];
                         return (
                             <ProductCard

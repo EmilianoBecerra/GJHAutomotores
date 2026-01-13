@@ -23,8 +23,8 @@ GJH Automotores es una aplicación web desarrollada con React que permite a los 
 - **Vite 7.2.4**: Build tool y desarrollo
 - **CSS**: Estilos personalizados
 - **GitHub Pages**: Deployment
-- **Google Sheets**: Cómo base de datos
-- **Sheet Best**: Para crear una pase de consulta al google sheets.
+- **Google Sheets**: Como base de datos
+- **Sheet Best**: Para crear una API de consulta al google sheets.
 - **Cloudinary**: Para almacenar las imagenes en una nube y consultar mediante links.
 
 ## Estructura del proyecto

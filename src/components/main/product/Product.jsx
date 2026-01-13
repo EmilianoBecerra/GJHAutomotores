@@ -4,7 +4,6 @@ import { FeatureItem } from "./featureItem/FeatureItem.jsx";
 import { Loading } from "../../loading/Loading.jsx";
 import { Error } from "../../error/Error.jsx";
 import { ProductInfo } from "./featureItem/ProductInfo.jsx";
-import { globalContext } from "../../../context/context.jsx";
 import { useParams } from "react-router-dom";
 
 
@@ -14,7 +13,6 @@ export function Product() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [image, setImage] = useState("");
-    const {setBuscador} = useContext(globalContext);
 
     useEffect(() => {
         const getProduct = async () => {

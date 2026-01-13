@@ -1,20 +1,20 @@
 import { useContext, useEffect, useState } from "react"
-import { ProductCard } from "../products/productCard/ProductCard"
 import "./Busqueda.css"
 import { Loading } from "../../loading/Loading";
 import { Error } from "../../error/Error";
 import { globalContext } from "../../../context/context";
-import { useParams } from "react-router-dom";
+import { distanciaLeveshtein } from "../../../utils/distanciaLevenshtein.js";
+import { ProductCard } from "../products/productCard/ProductCard.jsx";
 
 export function Busqueda() {
-
-    const [products, setProducts] = useState([]);
+    const [productos, setProductos] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const { buscador, setBuscador } = useContext(globalContext);
+    const { buscador } = useContext(globalContext);
+    const [productosFiltrados, setProductosFiltrados] = useState([]);
 
     useEffect(() => {
-        const getFilterProducts = async () => {
+        const getFilterProductos = async () => {
             try {
                 setLoading(true);
                 const response = await fetch(import.meta.env.VITE_API_BASE_URL);
@@ -23,7 +23,7 @@ export function Busqueda() {
                 if (!data || data.length === 0) {
                     throw new Error("Error al parsear los productos");
                 }
-                setProducts(data);
+                setProductos(data);
             } catch (error) {
                 console.error("Hubo una falla al buscar los productos", error);
                 setError(error);
@@ -32,35 +32,54 @@ export function Busqueda() {
             }
         }
         setTimeout(() => {
-            getFilterProducts();
+            getFilterProductos();
         }, "100");
 
-    }, []);
+    }, [buscador]);
 
     if (loading) return <Loading />
     if (error) return <Error />
 
-    const buscadorCaseInsensitive = buscador.toLowerCase();
+    /*  function buscarProducto(input, products, umbralMaximo = 2) {
+         const inputNormalizado = input.toLowerCase().trim();
+ 
+         if (inputNormalizado === "") return [];
+ 
+         const coincidenciasExactas = products.filter(producto => {
+             producto.marca.toLowerCase().includes(inputNormalizado) || producto.modelo.toLowerCase().includes(inputNormalizado);
+         });
+ 
+         if (coincidenciasExactas.length > 0) {
+             return coincidenciasExactas;
+         }
+ 
+         const productosConDistancia = products.map(producto => ({
+             ...producto,
+             distancia: distanciaLeveshtein(inputNormalizado, producto.nombre)
+         }))
+ 
+         const coincidenciasAproximadas = productosConDistancia
+             .filter(p => p.distancia <= umbralMaximo)
+             .sort((a, b) => a.distancia - b.distancia);
+ 
+         return coincidenciasAproximadas;
+     } */
 
     return (
         <div className="filter-container">
             {
-                products.map((product) => {
-                    if (product.marca.toLowerCase().includes(buscadorCaseInsensitive) || product.modelo.toLowerCase().includes(buscadorCaseInsensitive)) {
-                        const imgArray = product.imgDetail ? product.imgDetail.split(",") : [];
-                        return (
-                            <ProductCard
-                                urlImg={imgArray[0]}
-                                key={product.id}
-                                brand={product.marca}
-                                model={product.modelo}
-                                fabricacion={product.fabricacion}
-                                productId={product.id}
-                                color={product.color}
-                            />
-                        )
-                    }
-                })
+                /*  productos.map((product) => (
+                     <ProductCard
+                         urlImg={imgArray[0]}
+                         key={product.id}
+                         brand={product.marca}
+                         model={product.modelo}
+                         fabricacion={product.fabricacion}
+                         productId={product.id}
+                         color={product.color}
+                     />
+                 )
+                 ) */
             }
 
         </div>

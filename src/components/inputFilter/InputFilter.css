@@ -1,0 +1,18 @@
+.inputAgrupados {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    justify-content: center;
+
+}
+
+.inputAgrupados label {
+    text-transform: capitalize;
+}
+
+
+.inputAgrupados input {
+    font-size: 18px;
+    outline: none;
+    text-align: center;
+}

@@ -2,10 +2,10 @@ import "./App.css"
 import { Header } from "./components/header/Header.jsx"
 import { Footer } from "./components/footer/Footer.jsx"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import { Pickup, Car, Contact, Financing, Welcome, Product } from "./components/main/"
-import { Busqueda } from "./components/main/busqueda/Busqueda.jsx"
+import { Contact, Financing, Welcome, Product } from "./components/main/"
 import { globalContext } from "./context/context.jsx"
-import { useEffect, useState } from "react"
+import { useState } from "react"
+import { AllProducts } from "./components/main/products/AllProducts/AllProducts.jsx"
 
 function App() {
 
@@ -14,18 +14,17 @@ function App() {
   return (
     <BrowserRouter basename={import.meta.env.BASE_URL}>
       <div className="principal-page">
-        <globalContext.Provider value={{buscador, setBuscador}}>
+        <globalContext.Provider value={{ buscador, setBuscador }}>
           <Header />
           <main>
             <Routes>
               <Route path="/" element={<Welcome />} />
-              <Route path={"/productos/autos"} element={<Car />} />
-              <Route path={"/productos/camionetas"} element={<Pickup />} />
+              <Route path={"/productos/auto"} element={<AllProducts />} />
+              <Route path={"/productos/camioneta"} element={<AllProducts />} />
               <Route path="/planes" element={<Financing />} />
               <Route path="/nosotros" element={<Contact />} />
-              <Route path="/productos/autos/:carId" element={<Product />} />
-              <Route path="/productos/camionetas/:carId" element={<Product />} />
-              <Route path="/buscador" element={<Busqueda />} />
+              <Route path="/productos/auto/:carId" element={<Product />} />
+              <Route path="/productos/camioneta/:carId" element={<Product />} />
             </Routes>
           </main>
           <Footer />

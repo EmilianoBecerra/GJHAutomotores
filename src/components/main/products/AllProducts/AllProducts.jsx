@@ -1,13 +1,14 @@
-import "./Car.css"
-import { ProductCard } from "../products/productCard/ProductCard.jsx"
+import { filtrarProductos } from "../../../../utils/filtrarProductos.js";
+import { Error } from "../../../error/Error";
+import { FormBusqueda } from "../../../formBusqueda/FormBusqueda.jsx";
+import { Loading } from "../../../loading/Loading";
+import { ProductCard } from "../productCard/ProductCard.jsx";
+import "./AllProducts.css";
 import { useEffect, useState } from "react";
-import { Loading } from "../../loading/Loading.jsx";
-import { Error } from "../../error/Error.jsx";
-import { filtrarProductos } from "../../../utils/filtrarProductos.js";
-import { FormBusqueda } from "../../formBusqueda/FormBusqueda.jsx";
-import { useParams } from "react-router-dom";
 
-export function Car() {
+
+
+export function AllProducts() {
     const [productos, setProductos] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -16,8 +17,7 @@ export function Car() {
     const params = window.location.pathname;
 
     const paramsArray = params.split("/");
-    const tipoProducto = paramsArray[paramsArray.length -1]
-
+    const tipoProducto = paramsArray[paramsArray.length - 1]
 
     useEffect(() => {
         const getProductos = async () => {
@@ -35,6 +35,7 @@ export function Car() {
                 setError(error);
             } finally {
                 setLoading(false);
+
             }
         }
         getProductos();
@@ -48,55 +49,57 @@ export function Car() {
         return <Error />
     }
 
-
     setTimeout(() => {
         if (buscador.length >= 1) {
             setProductosFiltrados(filtrarProductos(buscador, productos));
-        } if(productosFiltrados.length >= 1 && buscador.length === 0) {
+        }
+        if(buscador.length == 0 && productosFiltrados.length > 0){
             setProductosFiltrados([]);
         }
     }, 200)
 
 
-    const autos = productos.filter(producto => (producto.carroceria === tipoProducto));
+    const arrayTipoProducto = productos.filter(producto => (producto.carroceria === tipoProducto));
     return (
         <div>
             <div className="busqueda-box">
                 <p><b>Busque Avanzada </b></p>
                 <FormBusqueda
                     buscador={buscador}
-                    setBuscador={setBuscador}
+                    setBuscador={buscador}
                 />
             </div>
 
             <div className="container">
                 {
                     buscador.length < 1 ?
-                        autos.map(auto => {
-                            const imgArray = auto.imgDetail ? auto.imgDetail.split(",") : [];
+                        arrayTipoProducto.map(product => {
+                            const imgArray = product.imgDetail ? product.imgDetail.split(",") : [];
                             return (
                                 <ProductCard
                                     urlImg={imgArray[0]}
-                                    key={auto.id}
-                                    brand={auto.marca}
-                                    model={auto.modelo}
-                                    fabricacion={auto.fabricacion}
-                                    productId={auto.id}
-                                    color={auto.color}
+                                    key={product.id}
+                                    brand={product.marca}
+                                    model={product.modelo}
+                                    fabricacion={product.fabricacion}
+                                    productId={product.id}
+                                    color={product.color}
+                                    type={tipoProducto}
                                 />
                             )
                         })
-                        : productosFiltrados.map(auto => {
-                            const imgArray = auto.imgDetail ? auto.imgDetail.split(",") : [];
+                        : productosFiltrados.map(product => {
+                            const imgArray = product.imgDetail ? product.imgDetail.split(",") : [];
                             return (
                                 <ProductCard
                                     urlImg={imgArray[0]}
-                                    key={auto.id}
-                                    brand={auto.marca}
-                                    model={auto.modelo}
-                                    fabricacion={auto.fabricacion}
-                                    productId={auto.id}
-                                    color={auto.color}
+                                    key={product.id}
+                                    brand={product.marca}
+                                    model={product.modelo}
+                                    fabricacion={product.fabricacion}
+                                    productId={product.id}
+                                    color={product.color}
+                                    type={tipoProducto}
                                 />
                             )
                         })

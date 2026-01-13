@@ -18,7 +18,7 @@ export function ProductInfo({ product }) {
                                         <div key={index} className="table-tips">
                                             <div>
                                                 <p className="typeTips">{tips}</p>
-                                                <p className="tips">{product[prop] != "" ? product[prop] : "N/A"}</p>
+                                                <p className="tips">{product[prop] !== "" ? product[prop] : "N/A"}</p>
                                             </div>
                                         </div>
                                     )

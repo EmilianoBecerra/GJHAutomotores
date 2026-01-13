@@ -62,14 +62,14 @@ export function Product() {
 
     const imgArray = product.imgDetail ? product.imgDetail.split(",") : [];
     const whatsappMessage = `Hola, me interesa el ${product.marca} ${product.modelo} ${product.version}`;
-    const whatsappUrl = `https://api.whatsapp.com/send/?phone=${import.meta.env.VITE_API_CEL_NUMBER}}&text=${encodeURIComponent(whatsappMessage)}&type=phone_number&app_absent=0`;
+    const whatsappUrl = `https://api.whatsapp.com/send/?phone=${import.meta.env.VITE_API_CEL_NUMBER}&text=${encodeURIComponent(whatsappMessage)}&type=phone_number&app_absent=0`;
 
     return (
         <div className="product-info">
             <div className="resume-info">
                 <div className="imgs">
                     <div className="principal-img">
-                        <img src={image == "" ? imgArray[0] : image} alt={product.name} className="large-photo"/>
+                        <img src={image === "" ? imgArray[0] : image} alt={product.name} className="large-photo"/>
                     </div>
                     {imgArray.length > 0 && (
                         <div className="smalls-img">

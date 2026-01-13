@@ -10,6 +10,13 @@
     text-align: center;
 }
 
+@media screen and (max-width: 1024px) {
+    .link {
+        padding: 6px;
+        font-size: 15px;
+    }
+}
+
 @media screen and (max-width: 768px) {
     .link {
         padding: 8px;

@@ -2,10 +2,9 @@ import "./App.css"
 import { Header } from "./components/header/Header.jsx"
 import { Footer } from "./components/footer/Footer.jsx"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import { Contact, Financing, Welcome, Product } from "./components/main/"
+import { Contact, Financing, Welcome, Product, AllProducts } from "./components/main/"
 import { globalContext } from "./context/context.jsx"
 import { useState } from "react"
-import { AllProducts } from "./components/main/products/AllProducts/AllProducts.jsx"
 
 function App() {
 

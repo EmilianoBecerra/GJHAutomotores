@@ -48,7 +48,7 @@ export const infoBoxs = [
     {
         "title": "Entretenimiento",
         "box": [
-            "Bluethoot",
+            "Bluetooth",
             "Apple CarPlay",
             "Radio",
             "Android",

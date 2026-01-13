@@ -23,7 +23,7 @@ export function distanciaLeveshtein (str1, str2) {
             }
             else{
                 matriz[i][j] = Math.min(
-                    matriz[1-1][j] + 1,
+                    matriz[i-1][j] + 1,
                     matriz[i][j - 1] + 1,
                     matriz[i - 1][j - 1] + 1
                 )

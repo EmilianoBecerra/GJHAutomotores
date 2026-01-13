@@ -7,7 +7,6 @@
 
 .busqueda-box {
     width: 100%;
-    border: 2px solid black;
     padding: 5px;
     display: flex;
     flex-direction: column;
@@ -31,5 +30,21 @@
         grid-template-columns: 1fr;
         gap: 20px;
         padding: 15px 10px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .container {
+        gap: 15px;
+        padding: 10px 5px;
+    }
+
+    .busqueda-box {
+        padding: 8px;
+    }
+
+    .busqueda-box p {
+        margin-bottom: 8px;
+        font-size: 14px;
     }
 }

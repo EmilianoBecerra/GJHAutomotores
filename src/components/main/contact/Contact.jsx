@@ -1,5 +1,5 @@
 import "./Contact.css"
-import { ContactCard } from "./contactCard/contactCard"
+import { ContactCard } from "./contactCard/ContactCard"
 
 export function Contact() {
     const props = [{

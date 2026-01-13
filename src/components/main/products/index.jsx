@@ -1,2 +1,1 @@
-export { Car } from './Car'
-export { Pickup } from './Pickup'
+export { AllProducts } from './AllProducts/AllProducts'

@@ -53,7 +53,7 @@ export function AllProducts() {
         if (buscador.length >= 1) {
             setProductosFiltrados(filtrarProductos(buscador, productos));
         }
-        if(buscador.length == 0 && productosFiltrados.length > 0){
+        if (buscador.length === 0 && productosFiltrados.length > 0) {
             setProductosFiltrados([]);
         }
     }, 200)
@@ -63,13 +63,12 @@ export function AllProducts() {
     return (
         <div>
             <div className="busqueda-box">
-                <p><b>Busque Avanzada </b></p>
+                <p><b>Búsqueda Avanzada</b></p>
                 <FormBusqueda
                     buscador={buscador}
-                    setBuscador={buscador}
+                    setBuscador={setBuscador}
                 />
             </div>
-
             <div className="container">
                 {
                     buscador.length < 1 ?

@@ -16,3 +16,43 @@
     outline: none;
     text-align: center;
 }
+
+@media screen and (max-width: 1024px) {
+    .inputAgrupados {
+        width: 350px;
+    }
+
+    .inputAgrupados input {
+        font-size: 17px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .inputAgrupados {
+        width: 100%;
+        max-width: 350px;
+        padding: 0 10px;
+    }
+
+    .inputAgrupados label {
+        font-size: 15px;
+    }
+
+    .inputAgrupados input {
+        font-size: 16px;
+        padding: 8px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .inputAgrupados {
+        width: 100%;
+        max-width: 100%;
+        padding: 0 5px;
+    }
+
+    .inputAgrupados input {
+        font-size: 15px;
+        padding: 10px 5px;
+    }
+}

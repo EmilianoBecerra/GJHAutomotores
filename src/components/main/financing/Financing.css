@@ -55,3 +55,19 @@
         gap: 25px;
     }
 }
+
+@media screen and (max-width: 480px) {
+    .financing {
+        padding: 20px 10px;
+    }
+
+    .financing article {
+        line-height: 26px;
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .cardsFinancing {
+        gap: 20px;
+    }
+}

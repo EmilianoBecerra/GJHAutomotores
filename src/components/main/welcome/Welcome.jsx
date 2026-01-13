@@ -9,7 +9,7 @@ export function Welcome() {
                 <article>
                     En <b>GJH Automotores</b>, no solo vendemos autos; conectamos personas con sus metas y aventuras. Con años de trayectoria en el mercado automotriz, nos hemos consolidado como el referente de confianza para quienes buscan renovar su vehículo o adquirir su primer coche con total seguridad.
                 </article>
-                <LinkButton text={"Conocenos"} color={"white"}url={"/Nosotros/"}  className="link"/>
+                <LinkButton text={"Conocenos"} color={"white"} url={"/Nosotros/"} className="link"/>
             </div>
             <div className="box-propuestas">
                 <h3>Nuestra Propuesta de Valor</h3>

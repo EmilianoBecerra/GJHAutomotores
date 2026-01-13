@@ -36,6 +36,7 @@
 .tips {
     font-weight: 200;
     padding-left: 8px;
+    text-transform: capitalize;
 }
 
 @media screen and (max-width: 1024px) {

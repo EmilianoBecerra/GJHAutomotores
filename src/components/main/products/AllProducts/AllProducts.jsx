@@ -56,7 +56,7 @@ export function AllProducts() {
         if (buscador.length === 0 && productosFiltrados.length > 0) {
             setProductosFiltrados([]);
         }
-    }, 200)
+    }, 1000)
 
 
     const arrayTipoProducto = productos.filter(producto => (producto.carroceria === tipoProducto));

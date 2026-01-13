@@ -32,7 +32,6 @@ export function Product() {
             }
             finally {
                 setLoading(false);
-                setBuscador("");
             }
         }
 

@@ -1,11 +1,13 @@
 .bold-info {
     font-size: 17px;
     margin: 3px 0 0 10px;
+    text-transform: capitalize;
 }
 
 .feature {
     padding: 25px;
 }
+
 
 @media screen and (max-width: 1024px) {
     .bold-info {

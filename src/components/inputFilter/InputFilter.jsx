@@ -9,8 +9,7 @@ export function InputFilter({type, value, setBuscador}) {
 
     return (
         <div className="inputAgrupados">
-            {/* <label htmlFor={label}>{label}</label> */}
-            <input type={type} value={value} onChange={handleInputChange}/>
+            <input type={type} value={value} onChange={handleInputChange} placeholder="Busca por modelo, marca, año o kilometros"/>
         </div>
     )
 }

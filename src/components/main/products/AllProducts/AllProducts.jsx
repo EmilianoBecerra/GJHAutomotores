@@ -63,7 +63,6 @@ export function AllProducts() {
     return (
         <div>
             <div className="busqueda-box">
-                <p><b>Búsqueda Avanzada</b></p>
                 <FormBusqueda
                     buscador={buscador}
                     setBuscador={setBuscador}

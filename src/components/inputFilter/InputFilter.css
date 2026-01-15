@@ -3,7 +3,6 @@
     flex-direction: column;
     width: 50%;
     justify-content: center;
-    border-radius: 8px;
 }
 
 .busqueda-personalizada input {
@@ -13,6 +12,8 @@
     text-transform: capitalize;
     font-weight: bold;
     padding: 5px;
+    border-radius: 8px;
+    outline: none;
 }
 
 .busqueda-personalizada input::placeholder {

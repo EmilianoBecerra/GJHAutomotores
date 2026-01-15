@@ -57,7 +57,7 @@ export function AllProducts() {
     }
 
     if (error) {
-        return <Error />
+        return <Error tipoError={"productos"}/>
     }
 
     return (

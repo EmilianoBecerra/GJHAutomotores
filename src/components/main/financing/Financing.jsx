@@ -1,8 +1,40 @@
 
+import { useEffect, useState } from "react"
 import { CardFinancing } from "./cardFinancing/CardFinancing.jsx"
 import "./Financing.css"
+import { Loading } from "../../loading/Loading.jsx";
+import { Error } from "../../error/Error.jsx";
+import { LoadingSkeleton } from "../../loading/LoadingSkeleton.jsx";
 
 export function Financing() {
+
+    const [planes, setPlanes] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        const getPlanes = async () => {
+            try {
+                setLoading(true);
+                const response = await fetch(import.meta.env.VITE_API_PLANES_URL);
+                if (!response) throw new Error("Planes no encontrados");
+                const data = await response.json();
+                if (!data || data.length === 0) {
+                    throw new Error("Error al buscar los productos");
+                }
+                setPlanes(data);
+            } catch (error) {
+                console.error("Error al solicitar planes", error);
+                setError(error);
+            } finally {
+                setLoading(false);
+            }
+        }
+        getPlanes();
+    }, [])
+
+    //if (loading) return <LoadingSkeleton />
+    if (error) return <Error tipoError={"Planes"}/>
     return (
         <div className="financing">
             <article>
@@ -10,21 +42,16 @@ export function Financing() {
                 <p className="subtitle">Conocé nuestras opciones de financiación a medida y elegí la que mejor se adapte a tus posibilidades.</p>
             </article>
             <div className="cardsFinancing">
-                <CardFinancing
-                    title={"Cuotas Fijas en Pesos"}
-                    description={"Financiamos hasta el 50% del valor de tu unidad en 12, 24 o 36 cuotas fijas. Sin sorpresas: sabés cuánto pagás desde el primer mes hasta el último."}
-                    interest={"Tasa fija preferencial."}
-                />
-                <CardFinancing
-                    title={"Créditos UVA / Tasa Variable"}
-                    description={"Accedé a montos más altos con la cuota inicial más baja del mercado. Ideal para quienes buscan renovar su unidad con un desembolso mensual mínimo."}
-                    interest={"Financiación de hasta el 70%."}
-                />
-                <CardFinancing
-                    title={"Plan Canje (Llave por Llave)"}
-                    description={"Tomamos tu usado como parte de pago al mejor precio del mercado. Entregás tu auto y te llevás el nuevo en el acto, sin quedarte a pie."}
-                    interest={"Tasación inmediata."}
-                />
+                {
+                    loading ? <LoadingSkeleton /> :
+                        planes.map(plan => (
+                            <CardFinancing
+                                title={plan.titulo}
+                                description={plan.descripcion}
+                                interest={plan.intereses}
+                            />
+                        ))
+                }
             </div>
         </div>
     )

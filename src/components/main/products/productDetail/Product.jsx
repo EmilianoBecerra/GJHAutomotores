@@ -45,7 +45,7 @@ export function Product() {
     }
 
     if (error) {
-        return <Error />
+        return <Error tipoError={"Producto"}/>
     }
 
     if (!product) {

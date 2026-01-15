@@ -1,9 +1,10 @@
 .financing{
-    width: 100%;
+    max-width: 100vw;
     height: 87vh;
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
+    margin-bottom: 10px;
 }
 
 .financing article {
@@ -16,6 +17,7 @@
     flex-flow: row nowrap;
     justify-content: space-around;
     align-items: center;
+    max-width: 100%;
 }
 
 @media screen and (max-width: 1024px) {

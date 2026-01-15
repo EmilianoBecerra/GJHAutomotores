@@ -1,9 +1,9 @@
-import "./CargaProducto.css";
+import "./ProductVisualization.css";
 
-export function CargaProducto() {
+export function ProductVisualization() {
     return(
         <div className="errorCarga">
-            <p>No se encontró ninguna producto.</p>
+            <p>No se encontró ningun producto.</p>
         </div>
     )
 }

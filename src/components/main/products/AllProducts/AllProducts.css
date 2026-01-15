@@ -5,6 +5,12 @@
     gap: 10px;
 }
 
+.sin-productos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .busqueda-box {
     width: 100%;
     padding: 5px;

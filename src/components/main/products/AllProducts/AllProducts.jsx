@@ -1,12 +1,11 @@
 import { filtrarProductos } from "../../../../utils/filtrarProductos.js";
 import { Error } from "../../../error/Error";
-import { FormBusqueda } from "../../../formBusqueda/FormBusqueda.jsx";
+import { FormBusqueda } from "../../../searchForm/SearchForm.jsx";
 import { Loading } from "../../../loading/Loading";
 import { ProductCard } from "../productCard/ProductCard.jsx";
 import "./AllProducts.css";
 import { useEffect, useState } from "react";
-
-
+import { ProductVisualization } from "../../../error/ProductVisualization.jsx";
 
 export function AllProducts() {
     const [productos, setProductos] = useState([]);
@@ -15,10 +14,8 @@ export function AllProducts() {
     const [buscador, setBuscador] = useState("")
     const [productosFiltrados, setProductosFiltrados] = useState([]);
     const params = window.location.pathname;
-
     const paramsArray = params.split("/");
-    const tipoProducto = paramsArray[paramsArray.length - 1]
-
+    const tipoProducto = paramsArray[paramsArray.length - 1];
     useEffect(() => {
         const getProductos = async () => {
             setLoading(true);
@@ -35,11 +32,25 @@ export function AllProducts() {
                 setError(error);
             } finally {
                 setLoading(false);
-
             }
         }
         getProductos();
     }, [])
+
+    const arrayTipoProducto = productos.filter(producto => (producto.carroceria === tipoProducto));
+
+    useEffect(() => {
+        if (buscador.length >= 1) {
+            const arrayFiltrado = filtrarProductos(buscador, arrayTipoProducto);
+            setProductosFiltrados(arrayFiltrado);
+        } else {
+            setProductosFiltrados([])
+        }
+    }, [buscador, productos, tipoProducto]);
+
+    const layout = buscador.length >= 1 && productosFiltrados.length === 0
+        ? "sin-productos"
+        : "container";
 
     if (loading) {
         return <Loading />
@@ -49,26 +60,15 @@ export function AllProducts() {
         return <Error />
     }
 
-    setTimeout(() => {
-        if (buscador.length >= 1) {
-            setProductosFiltrados(filtrarProductos(buscador, productos));
-        }
-        if (buscador.length === 0 && productosFiltrados.length > 0) {
-            setProductosFiltrados([]);
-        }
-    }, 1000)
-
-
-    const arrayTipoProducto = productos.filter(producto => (producto.carroceria === tipoProducto));
     return (
-        <div>
+        <div className="productos">
             <div className="busqueda-box">
                 <FormBusqueda
                     buscador={buscador}
                     setBuscador={setBuscador}
                 />
             </div>
-            <div className="container">
+            <div className={layout}>
                 {
                     buscador.length < 1 ?
                         arrayTipoProducto.map(product => {
@@ -86,21 +86,23 @@ export function AllProducts() {
                                 />
                             )
                         })
-                        : productosFiltrados.map(product => {
-                            const imgArray = product.imgDetail ? product.imgDetail.split(",") : [];
-                            return (
-                                <ProductCard
-                                    urlImg={imgArray[0]}
-                                    key={product.id}
-                                    brand={product.marca}
-                                    model={product.modelo}
-                                    fabricacion={product.fabricacion}
-                                    productId={product.id}
-                                    color={product.color}
-                                    type={tipoProducto}
-                                />
-                            )
-                        })
+                        : productosFiltrados.length > 0 ?
+                            productosFiltrados.map((product, index) => {
+                                const imgArray = product.imgDetail ? product.imgDetail.split(",") : [];
+                                return (
+                                    <ProductCard
+                                        urlImg={imgArray[0]}
+                                        key={product.id}
+                                        brand={product.marca}
+                                        model={product.modelo}
+                                        fabricacion={product.fabricacion}
+                                        productId={product.id}
+                                        color={product.color}
+                                        type={tipoProducto}
+                                    />
+                                )
+                            }) :
+                            <ProductVisualization />
                 }
             </div>
         </div>

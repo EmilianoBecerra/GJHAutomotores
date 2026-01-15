@@ -1,10 +1,10 @@
-import { useContext, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import "./Product.css"
-import { FeatureItem } from "./featureItem/FeatureItem.jsx";
-import { Loading } from "../../loading/Loading.jsx";
-import { Error } from "../../error/Error.jsx";
-import { ProductInfo } from "./featureItem/ProductInfo.jsx";
 import { useParams } from "react-router-dom";
+import { Loading } from "../../../loading/Loading";
+import { Error } from "../../../error/Error";
+import {FeatureItem} from "../productDetail/featureItem/FeatureItem"
+import {ProductInfo} from "../productDetail/featureItem/ProductInfo"
 
 
 export function Product() {

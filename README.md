@@ -36,13 +36,13 @@ GJHAutomotores/
 │   │   ├── header/          # Componente del header
 │   │   ├── footer/          # Componente del footer
 │   │   ├── Link/            # Componentes de enlaces
-│   │   ├── formBusqueda/    # Formulario de búsqueda
+│   │   ├── searchForm/    # Formulario de búsqueda
 │   │   ├── inputFilter/     # Filtros de productos
 │   │   ├── error/           # Componentes de error
 │   │   └── main/            # Componentes principales
 │   │       ├── welcome/     # Página de bienvenida
 │   │       ├── products/    # Listado de productos
-│   │       ├── product/     # Detalle del producto
+│   │           ├── productDetail/     # Detalle del producto
 │   │       ├── financing/   # Planes de financiación
 │   │       └── contact/     # Página de contacto
 │   ├── utils/               # Utilidades (algoritmo Levenshtein, etc.)

@@ -6,7 +6,7 @@
   box-sizing: border-box;
 }
 
-.principal-page{
+.principal-page {
   min-height: 100vh;
   width: 100%;
   display: flex;
@@ -18,7 +18,6 @@ main {
   font-family: "Rubik", sans-serif;
   font-weight: 400;
   font-style: normal;
-  padding: 0px 5px;
   flex: 1;
 }
 

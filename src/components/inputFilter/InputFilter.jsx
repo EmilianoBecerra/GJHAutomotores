@@ -8,8 +8,8 @@ export function InputFilter({type, value, setBuscador}) {
     }
 
     return (
-        <div className="inputAgrupados">
-            <input type={type} value={value} onChange={handleInputChange} placeholder="Busca por modelo, marca, año o kilometros"/>
+        <div className="busqueda-personalizada">
+            <input type={type} value={value} onChange={handleInputChange} placeholder="Ingresa Marca o Modelo"/>
         </div>
     )
 }

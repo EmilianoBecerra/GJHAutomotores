@@ -1,5 +1,5 @@
 import { InputFilter } from "../inputFilter/InputFilter";
-import "./FormBusqueda.css";
+import "./SearchForm.css";
 
 
 export function FormBusqueda({ buscador, setBuscador }) {
